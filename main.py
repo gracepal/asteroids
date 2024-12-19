@@ -1,5 +1,8 @@
+import pdb
+import sys
 import pygame
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from circleshape import CircleShape
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
@@ -35,6 +38,11 @@ def main():
         # player.update(dt)
         for obj in updatable:
             obj.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                print("Game over!")
+                sys.exit()
 
         screen.fill(color="black")
 
